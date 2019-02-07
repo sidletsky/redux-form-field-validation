@@ -4,29 +4,11 @@ var assert = require('assert')
 var validation = require('../src/index')
 
 describe('Email', function () {
-  describe.only('String without @', function () {
-    it('Must return InvalidEmail for JustAString', function () {
-      assert.strictEqual('InvalidEmail', validation.email('JustAString'))
-    })
-  })
-
-  describe.only('No value (for empty field', function () {
-    it('Must return undefined for null', function () {
-      assert.strictEqual(undefined, validation.email(null))
-      assert.strictEqual(undefined, validation.email(undefined))
-    })
-  })
-
-  describe.only('Number instead of string', function () {
-    it('Must return InvalidEmail for 1', function () {
-      assert.strictEqual('InvalidEmail', validation.email(1))
-    })
-  })
-
   describe.only('String with spaces', function () {
     it('Must return InvalidEmail for spaces in name', function () {
       assert.strictEqual('InvalidEmail', validation.email('space s@gmail.com'))
       assert.strictEqual('InvalidEmail', validation.email('spaces @gmail.com'))
+      assert.strictEqual('InvalidEmail', validation.email('spac es@gmail.com'))
     })
 
     it('Must return InvalidEmail for spaces after @', function () {
@@ -34,32 +16,86 @@ describe('Email', function () {
       assert.strictEqual('InvalidEmail', validation.email('spaces@gmail .com'))
       assert.strictEqual('InvalidEmail', validation.email('spaces@ gmail.com'))
     })
-  })
 
-  describe.only('Wrong email domain', function () {
-    it('Must return InvalidEmail for space@gm', function () {
-      assert.strictEqual('InvalidEmail', validation.email('space@gm'))
-    })
-    it('Must return InvalidEmail for space@gmail.', function () {
-      assert.strictEqual('InvalidEmail', validation.email('space123@gmail.'))
-    })
-    it('Must return InvalidEmail for space@gmail.c', function () {
-      assert.strictEqual('InvalidEmail', validation.email('space@gmail.c'))
+    it('Must return InvalidEmail for addresses with special characters', function () {
+      assert.strictEqual('InvalidEmail', validation.email('spaces@gmail. com'))
+      assert.strictEqual('InvalidEmail', validation.email('spaces@gmail .com'))
+      assert.strictEqual('InvalidEmail', validation.email('spaces@ gmail.com'))
     })
   })
 
-  describe.only('Wrong email name', function () {
-    it('Must return InvalidEmail for @gmail.com', function () {
-      assert.strictEqual('InvalidEmail', validation.email('@gmail.com'))
-    })
-    it('Must return undefined for space.space@gmail.com', function () {
+  describe.only('Must return undefined for the right email name', function () {
+    it('space.space@gmail.com', function () {
       assert.strictEqual(undefined, validation.email('space.space@gmail.com'))
     })
-    it('Must return undefined for someemail123@gmail.com', function () {
+    it('someemail123@gmail.com', function () {
       assert.strictEqual(undefined, validation.email('someemail123@gmail.com'))
     })
-    it('Must return undefined for 123@gmail.com', function () {
+    it('123@gmail.com', function () {
       assert.strictEqual(undefined, validation.email('123@gmail.com'))
+    })
+  })
+
+  describe.only('Must return InvalidEmail for the wrong email name', function () {
+    it('@gmail.com', function () {
+      assert.strictEqual('InvalidEmail', validation.email('@gmail.com'))
+    })
+    it('JustAString', function () {
+      assert.strictEqual('InvalidEmail', validation.email('JustAString'))
+    })
+    it('1', function () {
+      assert.strictEqual('InvalidEmail', validation.email(1))
+    })
+    it('0', function () {
+      assert.strictEqual('InvalidEmail', validation.email(0))
+    })
+    it('null', function () {
+      assert.strictEqual('InvalidEmail', validation.email(null))
+    })
+    it('{} [object]', function () {
+      assert.strictEqual('InvalidEmail', validation.email({}))
+    })
+    it("{ key: 'value' } [object]", function () {
+      assert.strictEqual('InvalidEmail', validation.email({ key: 'value' }))
+    })
+  })
+
+  describe.only('Must return InvalidEmail for addresses with special characters', function () {
+    it('sf#@gmail.com', function () {
+      assert.strictEqual('InvalidEmail', validation.email('sf#@gmail.com'))
+    })
+    it('s#f@gmail.com', function () {
+      assert.strictEqual('InvalidEmail', validation.email('s#f@gmail.com'))
+    })
+    it('sf@gma%il.com', function () {
+      assert.strictEqual('InvalidEmail', validation.email('sf@gma%il.com'))
+    })
+    it('s!f@gmail.com', function () {
+      assert.strictEqual('InvalidEmail', validation.email('s!f@gmail.com'))
+    })
+    it('s$f@gmail.com', function () {
+      assert.strictEqual('InvalidEmail', validation.email('s$f@gmail.com'))
+    })
+    it('sf@gm$ail.com', function () {
+      assert.strictEqual('InvalidEmail', validation.email('sf@gm$ail.com'))
+    })
+    it('😀@gmail.com', function () {
+      assert.strictEqual('InvalidEmail', validation.email('😀@gmail.com'))
+    })
+  })
+
+  describe.only('Must return InvalidEmail for wrong email domain', function () {
+    it('space@gm', function () {
+      assert.strictEqual('InvalidEmail', validation.email('space@gm'))
+    })
+    it('space@gmail.', function () {
+      assert.strictEqual('InvalidEmail', validation.email('space123@gmail.'))
+    })
+    it('space@gmail.c', function () {
+      assert.strictEqual('InvalidEmail', validation.email('space@gmail.c'))
+    })
+    it('space@gmail.c', function () {
+      assert.strictEqual('InvalidEmail', validation.email('space@gmail.c$'))
     })
   })
 })
