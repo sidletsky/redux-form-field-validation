@@ -2,6 +2,7 @@
 
 ![](https://img.shields.io/npm/v/redux-form-field-validation.svg?style=flat)
 ![](https://img.shields.io/bundlephobia/min/redux-form-field-validation.svg?style=flat)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 Simple redux-form fields validation
 
