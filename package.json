@@ -1,0 +1,22 @@
+{
+  "name": "redux-form-field-validation",
+  "version": "1.0.0",
+  "description": "Simple redux form field validation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "f"
+  },
+  "keywords": [
+    "react",
+    "redux-form",
+    "form-validation",
+    "validation",
+    "validate"
+  ],
+  "author": "Oleksandr Sidletskyi",
+  "license": "ISC"
+}
