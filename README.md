@@ -62,5 +62,10 @@ const Input = ({
 ## API
 
 | Property        | Description           | Return message |
-| -------------   |:-------------:        | -----:|
-| email           | checks email validity | InvalidEmail |
+| -------------   |:---------------------:|          -----:|
+| email           | checks email validity | InvalidEmail   |
+| required        | makes field required  | Required       |
+
+
+## Dependencies
+none!
