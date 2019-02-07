@@ -1,22 +1,26 @@
 {
   "name": "redux-form-field-validation",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Simple redux form field validation",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "standard"
   },
   "repository": {
     "type": "git",
-    "url": "f"
+    "url": "https://github.com/sidletsky/redux-form-field-validation.git"
   },
   "keywords": [
     "react",
     "redux-form",
     "form-validation",
     "validation",
-    "validate"
+    "validate",
+    "field-validation"
   ],
-  "author": "Oleksandr Sidletskyi",
-  "license": "ISC"
+  "author": "Oleksandr Sidletskyi <oleksandr.sidletskyi@gmail.com> (https://github.com/sidletsky)",
+  "license": "GNU GPLv3",
+  "devDependencies": {
+    "standard": "^12.0.1"
+  }
 }
