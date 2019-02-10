@@ -4,7 +4,7 @@
 [![](https://img.shields.io/bundlephobia/min/redux-form-field-validation.svg?style=flat)](https://github.com/sidletsky/redux-form-field-validation)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-Simple redux-form fields validation
+Simple test-driven redux-form fields validation
 
 ## Install
 ```
@@ -18,7 +18,7 @@ npm i redux-form-field-validation
 ## Usage
 MyForm.js
 ```js
-import { email } from 'redux-form-field-validation';
+import { required, email } from 'redux-form-field-validation';
 
 ...
 
@@ -26,7 +26,7 @@ import { email } from 'redux-form-field-validation';
     id="email"
     name="email"
     component={Input}
-    validate={[email]}
+    validate={[required, email]}
     placeholder="Email"
     type="text"
 />
@@ -62,10 +62,13 @@ const Input = ({
 ```
 ## API
 
-| Property        | Description           | Return message | Note |
-| -------------   |:---------------------:|:--------------:|-----:|
+| Property        | Description           | Error message | Note |
+| -------------   |---------------------|--------------|-----|
 | email           | checks email validity | InvalidEmail   | According to RFCs. Taken from emailregex.com|
 | required        | makes field required  | Required       ||
+| intlPhoneNumber | international phone number | InvalidIntlPhoneNumber | starts with "+" and does not contain spaces |
+| positiveNumber  | checks if a number is bigger than zero | InvalidPositiveNumber |  |
+| negativeNumber  | checks if a number is smaller than zero | InvalidNegativeNumber |  |
 
 
 ## Dependencies

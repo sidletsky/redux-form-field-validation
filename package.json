@@ -1,6 +1,6 @@
 {
   "name": "redux-form-field-validation",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Simple redux form field validation",
   "main": "src/index.js",
   "scripts": {

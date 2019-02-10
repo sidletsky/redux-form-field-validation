@@ -3,8 +3,8 @@
 var assert = require('assert')
 var validation = require('../src/index')
 
-describe('Email', function () {
-  describe.only('String with spaces', function () {
+describe.only('Email', function () {
+  describe('String with spaces', function () {
     it('Must return InvalidEmail for spaces in name', function () {
       assert.strictEqual('InvalidEmail', validation.email('space s@gmail.com'))
       assert.strictEqual('InvalidEmail', validation.email('spaces @gmail.com'))
@@ -18,7 +18,7 @@ describe('Email', function () {
     })
   })
 
-  describe.only('Must return undefined for the right email name', function () {
+  describe('Must return undefined for the right email name', function () {
     it('email with a dot', function () {
       assert.strictEqual(undefined, validation.email('space.space@gmail.com'))
     })
@@ -50,7 +50,7 @@ describe('Email', function () {
     })
   })
 
-  describe.only('Must return InvalidEmail for the wrong email label', function () {
+  describe('Must return InvalidEmail for the wrong email label', function () {
     it('without email atext', function () {
       assert.strictEqual('InvalidEmail', validation.email('@gmail.com'))
     })
@@ -74,7 +74,7 @@ describe('Email', function () {
     })
   })
 
-  describe.only('Must return InvalidEmail for addresses with special characters', function () {
+  describe('Must return InvalidEmail for addresses with special characters', function () {
     it('domain with special character', function () {
       assert.strictEqual('InvalidEmail', validation.email('sf@gma%il.com'))
     })
@@ -83,7 +83,7 @@ describe('Email', function () {
     })
   })
 
-  describe.only('Must return InvalidEmail for wrong email domain', function () {
+  describe('Must return InvalidEmail for wrong email domain', function () {
     it('space@gm', function () {
       assert.strictEqual('InvalidEmail', validation.email('space@gm'))
     })
