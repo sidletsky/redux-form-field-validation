@@ -64,8 +64,7 @@ const Input = ({
 
 | Property        | Description           | Return message | Note |
 | -------------   |:---------------------:|:--------------:|-----:|
-| email           | checks email validity | InvalidEmail   | Accodring to 
-RFCs. Taken from [emailregex.com](https://emailregex.com)|
+| email           | checks email validity | InvalidEmail   | According to RFCs. Taken from emailregex.com|
 | required        | makes field required  | Required       ||
 
 
