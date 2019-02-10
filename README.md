@@ -1,7 +1,7 @@
 # Redux-form field validation
 
-![](https://img.shields.io/npm/v/redux-form-field-validation.svg?style=flat)
-![](https://img.shields.io/bundlephobia/min/redux-form-field-validation.svg?style=flat)
+[![](https://img.shields.io/npm/v/redux-form-field-validation.svg?style=flat)](https://www.npmjs.com/package/redux-form-field-validation)
+[![](https://img.shields.io/bundlephobia/min/redux-form-field-validation.svg?style=flat)](https://github.com/sidletsky/redux-form-field-validation)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 Simple redux-form fields validation
@@ -28,6 +28,7 @@ import { email } from 'redux-form-field-validation';
     component={Input}
     validate={[email]}
     placeholder="Email"
+    type="text"
 />
 
 ...
@@ -42,7 +43,7 @@ const Input = ({
   ...props
 }) => (
   <Fragment>
-      <HtmlInput
+      <input
         isInvalid={meta.error}
         touched={meta.touched}
         id={id}
@@ -61,10 +62,10 @@ const Input = ({
 ```
 ## API
 
-| Property        | Description           | Return message |
-| -------------   |:---------------------:|          -----:|
-| email           | checks email validity | InvalidEmail   |
-| required        | makes field required  | Required       |
+| Property        | Description           | Return message | Note |
+| -------------   |:---------------------:|:--------------:|-----:|
+| email           | checks email validity | InvalidEmail   | Accodring to RFCs. Taken from [emailregex.com](emailregex.com)|
+| required        | makes field required  | Required       ||
 
 
 ## Dependencies

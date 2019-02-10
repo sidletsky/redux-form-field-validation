@@ -4,9 +4,9 @@ exports.email = function (value) {
   if (typeof value !== 'string') {
     return 'InvalidEmail'
   }
-  return !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
-    ? 'InvalidEmail'
-    : undefined
+  return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value)
+    ? undefined
+    : 'InvalidEmail'
 }
 
 exports.required = function (value) {
